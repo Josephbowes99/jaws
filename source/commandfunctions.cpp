@@ -20,7 +20,7 @@ int exit_func(vector<string> args)
 
 int help_func(vector<string> args)
 {
-	cout << "Name - Usage" << endl;
+	cout << "Command - Usage" << endl << endl;
 	for(auto iterator = help_strings.begin(); iterator != help_strings.end(); iterator++)
 	{
 		cout << iterator->first << " - " << iterator->second << endl;
