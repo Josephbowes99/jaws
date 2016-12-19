@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "../include/main.h"
+#include "../include/math.h"
 
 using std::cout;
 using std::string;
@@ -41,5 +42,12 @@ int info_func(vector<string> args)
 
 int math_func(vector<string> args)
 {
+	switch (args[2])
+	{
+		case "+":
+			add_math(args[1], args[3]);
+			break;
+	}
+
 	return 0;
 }
