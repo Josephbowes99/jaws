@@ -4,6 +4,8 @@
 
 #include "../include/main.h"
 #include "../include/commandfunctions.h"
+#include "../include/math.h"
+#include "../include/functions.h"
 
 #include <iostream>
 #include <string>
@@ -56,20 +58,24 @@ string input()
 void main_loop()
 {
 	string in;
-	vector<string> empty;
+	string command_word;
+	vector<string> input_split;
 
 	while (!exit)
 	{
 		in = input();
+		splitter(input_split, in);
+		command_word = input_split[0];
 
-		if(in != "")
+		if(command_word != "")
 		{
-			if (commands.find(in) != commands.end())
+			if (commands.find(command_word) != commands.end())
 			{
-				commands[in](empty);
+				commands[command_word](input_split);
 			}
 			else cout << not_found << endl;
 		}
+		input_split.clear();
 	}
 }
 

@@ -38,3 +38,8 @@ int info_func(vector<string> args)
 
 	return 0;
 }
+
+int math_func(vector<string> args)
+{
+	return 0;
+}
