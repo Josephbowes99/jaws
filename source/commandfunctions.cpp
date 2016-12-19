@@ -34,6 +34,7 @@ int info_func(vector<string> args)
 	cout << short_name << endl;
 	cout << long_name << endl;
 	cout << "V" << version << endl;
+	cout << "The code for JAWS can be found at www.github.com/josephbowes99/jaws" << endl;
 
 	return 0;
 }
