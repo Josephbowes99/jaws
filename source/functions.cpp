@@ -38,7 +38,6 @@ vector<string> splitter_old(string in)
 	return words;
 }
 
-
 void splitter(vector<string> &words, string &in)
 {
     string current_word;
@@ -61,3 +60,8 @@ void splitter(vector<string> &words, string &in)
         words.push_back(current_word);
     }
 }
+
+//type validate
+
+
+

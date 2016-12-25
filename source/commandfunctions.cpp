@@ -42,11 +42,16 @@ int info_func(vector<string> args)
 
 int math_func(vector<string> args)
 {
-	switch (args[2])
+	//float num_one = (args[1], NULL);
+	//float num_two = (args[3], NULL);
+
+	if (args[2] == "+")
 	{
-		case "+":
-			add_math(args[1], args[3]);
-			break;
+		//add_math(num_one, num_two);
+	}
+	else if (args[2] == "-")
+	{
+
 	}
 
 	return 0;
