@@ -38,6 +38,8 @@ void commands_initialise()
 	commands["exit"] = &exit_func;
 	commands["help"] = &help_func;
 	commands["info"] = &info_func;
+	commands["math"] = &math_func;
+	commands["echo"] = &echo_func;
 }
 
 void help_initalise()
@@ -45,6 +47,8 @@ void help_initalise()
 	help_strings["exit"] = "Exits JAWS";
 	help_strings["help"] = "Outputs a list of commands";
 	help_strings["info"] = "Outputs all the info about JAWS";
+	help_strings["math"] = "Does very basic calculations";
+	help_strings["echo"] = "Returns the entered string";
 }
 
 string input()

@@ -38,7 +38,7 @@ vector<string> splitter_old(string in)
 	return words;
 }
 
-void splitter(vector<string> &words, string &in)
+void splitter_no_quotes(vector<string> &words, string &in)
 {
     string current_word;
 
@@ -53,6 +53,40 @@ void splitter(vector<string> &words, string &in)
             words.push_back(current_word);
             current_word = "";
         }
+    }
+
+    if(current_word.length() > 0)
+    {
+        words.push_back(current_word);
+    }
+}
+
+void splitter(vector<string> &words, string &in)
+{
+    string current_word;
+    bool quotes = false;
+
+    for(char c : in)
+    {
+    	if (c == '"')
+    	{
+    		if (quotes == true) quotes = false;
+    		if (quotes == false) quotes = true;
+    	}
+
+    	if (c == ' ' && quotes == false)
+    	{
+    		words.push_back(current_word);
+    		current_word = "";
+    	}
+
+    	else
+    	{
+    		if (c != '"')
+    		{
+    			current_word += c;
+    		}
+    	}
     }
 
     if(current_word.length() > 0)

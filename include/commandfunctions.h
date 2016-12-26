@@ -11,5 +11,6 @@ int exit_func(vector<string> args);
 int help_func(vector<string> args);
 int info_func(vector<string> args);
 int math_func(vector<string> args);
+int echo_func(vector<string> args);
 
 #endif
