@@ -71,7 +71,7 @@ void splitter(vector<string> &words, string &in)
     	if (c == '"')
     	{
     		if (quotes == true) quotes = false;
-    		if (quotes == false) quotes = true;
+    		else quotes = true;
     	}
 
     	if (c == ' ' && quotes == false)
