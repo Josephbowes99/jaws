@@ -42,6 +42,19 @@ int info_func(vector<string> args)
 
 int math_func(vector<string> args)
 {
+	if (args[1] == "#help")
+	{
+		cout << "The math function carrys out basic functions" << endl;
+		cout << "The 4 current operators are +, -, * and /" << endl;
+		cout << "Formatted: first number operator second number" << endl;
+	}
+
+	//int num_one = stoi(args[1]);
+	//int num_two = stoi(args[3]);
+	//int awnser = num_one + num_two;
+	//cout << awnser << endl;
+
+
 	//float num_one = (args[1], NULL);
 	//float num_two = (args[3], NULL);
 
@@ -59,126 +72,49 @@ int math_func(vector<string> args)
 	return 0;
 }
 
-//TODO
-//fix this mess, needs to call a function or something?
-//also error when entered: echo #s #4 hello jasdlfkf "uadoiufh djsf  iufijef" iahsdf o ewe
+//Echo functions
 
-int echo_func (vector<string>args)
+int echo_out(vector<string> strings, int count, bool spaces)
 {
-	if (args[1] == "#help")
+	int strings_count = strings.size();
+
+	if (count > strings_count)
 	{
-		cout << "Echo returns the value you entered" << endl;
-		cout << "#1    - Returns the first word entered" << endl;
-		cout << "#2    - Returns the first and second word entered" << endl;
-		cout << "#...  - This pattern is continued up to 5 words" << endl;
-		cout << "#s    - Returns the string without spaces" << endl;
+		cout << "Please enter more or as many words, as you have put in your arguments" << endl;
+		return 1;
 	}
 
-	else if (args[1] == "#1")
+	if (count == 0) count = strings.size();
+
+	for (int i = 0; i < count; i++)
 	{
-		for (int i = 2; i < 3; i++)
-		{
-			cout << args[i] << " ";
-		}
-		cout << endl;
+		if (spaces) cout << strings[i] << " ";
+		else cout << strings[i];
 	}
+	cout << endl;
+	return 0;
+}
 
-	else if (args[1] == "#2")
-	{
-		for (int i = 2; i < 4; i++)
-		{
-			cout << args[i] << " ";
-		}
-		cout << endl;
-	}
+int echo_func(vector<string> args)
+{
+	int count_wanted = 0;
+	bool spaces_wanted = true;
 
-	else if (args[1] == "#3")
-	{
-		for (int i = 2; i < 5; i++)
-		{
-			cout << args[i] << " ";
-		}
-		cout << endl;
-	}
+	vector<string> args_usable = args;
+	args_usable.erase(args_usable.begin());
 
-	else if (args[1] == "#4")
-	{
-		for (int i = 2; i < 6; i++)
-		{
-			cout << args[i] << " ";
-		}
-		cout << endl;
-	}
+	if (args[1].length() > 0 && args[1][0] == '#') args_usable.erase(args_usable.begin());
+	if (args[2].length() > 0 && args[2][0] == '#') args_usable.erase(args_usable.begin());
+	args.push_back(" ");
 
-	else if (args[1] == "#5")
-	{
-		for (int i = 2; i < 7; i++)
-		{
-			cout << args[i] << " ";
-		}
-		cout << endl;
-	}
+	if (args[1] == "#1" || args[2] == "#1") count_wanted = 1;
+	else if (args[1] == "#2" || args[2] == "#2") count_wanted = 2;
+	else if (args[1] == "#3" || args[2] == "#3") count_wanted = 3;
+	else if (args[1] == "#4" || args[2] == "#4") count_wanted = 4;
+	else if (args[1] == "#5" || args[2] == "#5") count_wanted = 5;
+	if (args[1] == "#s" || args[2] == "#s") spaces_wanted = false;
 
-	else if (args[1] == "#s")
-	{
-		if (args[2] == "#1")
-		{
-			for (int i = 3; i < 4; i++)
-			{
-				cout << args[i];
-			}
-		}
-
-		else if (args[2] == "#2")
-		{
-			for (int i = 3; i < 5; i++)
-			{
-				cout << args[i];
-			}
-		}
-
-		else if (args[2] == "#3")
-		{
-			for (int i = 3; i < 6; i++)
-			{
-				cout << args[i];
-			}
-		}
-
-		else if (args[2] == "#4")
-		{
-			for (int i = 3; i < 7; i++)
-			{
-				cout << args[i];
-			}
-		}
-
-		else if (args[2] == "#5")
-		{
-			for (int i = 3; i < 8; i++)
-			{
-				cout << args[i];
-			}
-		}
-
-		else
-		{
-			for (int i = 2; i < args.size(); i++)
-			{
-				cout << args[i];
-			}
-		}
-		cout << endl;
-	}
-
-	else
-	{
-		//for (int i = 1; i < args.size(); i++)
-		//{
-			//cout << args[i] << " ";
-		//}
-		cout << endl;
-	}
+	echo_out(args_usable, count_wanted, spaces_wanted);
 
 	return 0;
 }

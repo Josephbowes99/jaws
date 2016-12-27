@@ -97,5 +97,3 @@ void splitter(vector<string> &words, string &in)
 
 //type validate
 
-
-
