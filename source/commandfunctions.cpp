@@ -5,6 +5,7 @@
 
 #include "../include/main.h"
 #include "../include/math.h"
+#include "../include/help.h"
 
 using std::cout;
 using std::string;
@@ -21,11 +22,16 @@ int exit_func(vector<string> args)
 
 int help_func(vector<string> args)
 {
-	cout << "Command - Usage" << endl << endl;
-	for(auto iterator = help_strings.begin(); iterator != help_strings.end(); iterator++)
-	{
-		cout << iterator->first << " - " << iterator->second << endl;
-	}
+	vector<string> args_usable = args;
+	args_usable.erase(args_usable.begin());
+
+	int len = args.size();
+	if (len == 1) all_help();
+	else if (args_usable[0] == "exit") exit_help();
+	else if (args_usable[0] == "help") help_help();
+	else if (args_usable[0] == "info") info_help();
+	else if (args_usable[0] == "math") math_help();
+	else if (args_usable[0] == "echo") echo_help();
 
 	return 0;
 }
@@ -42,32 +48,7 @@ int info_func(vector<string> args)
 
 int math_func(vector<string> args)
 {
-	if (args[1] == "#help")
-	{
-		cout << "The math function carrys out basic functions" << endl;
-		cout << "The 4 current operators are +, -, * and /" << endl;
-		cout << "Formatted: first number operator second number" << endl;
-	}
-
-	//int num_one = stoi(args[1]);
-	//int num_two = stoi(args[3]);
-	//int awnser = num_one + num_two;
-	//cout << awnser << endl;
-
-
-	//float num_one = (args[1], NULL);
-	//float num_two = (args[3], NULL);
-
-	/*
-	if (args[2] == "+")
-	{
-		//add_math(num_one, num_two);
-	}
-	else if (args[2] == "-")
-	{
-
-	}
-	*/
+	//If statements to check operator type, then changing to ints,
 
 	return 0;
 }
@@ -97,15 +78,23 @@ int echo_out(vector<string> strings, int count, bool spaces)
 
 int echo_func(vector<string> args)
 {
+	int len = args.size();
+	if (len == 1)
+	{
+		cout << "Please enter a string to be returned" << endl;
+		return 0;
+	}
+
 	int count_wanted = 0;
 	bool spaces_wanted = true;
 
 	vector<string> args_usable = args;
 	args_usable.erase(args_usable.begin());
 
+	args.push_back(" ");
+
 	if (args[1].length() > 0 && args[1][0] == '#') args_usable.erase(args_usable.begin());
 	if (args[2].length() > 0 && args[2][0] == '#') args_usable.erase(args_usable.begin());
-	args.push_back(" ");
 
 	if (args[1] == "#1" || args[2] == "#1") count_wanted = 1;
 	else if (args[1] == "#2" || args[2] == "#2") count_wanted = 2;

@@ -12,7 +12,6 @@ extern const string long_name;
 extern const string version;
 extern bool exit;
 extern map<string, string> help_strings;
-extern map<string, string> help_strings;
 
 string input();
 

@@ -6,6 +6,7 @@
 #include "../include/commandfunctions.h"
 #include "../include/math.h"
 #include "../include/functions.h"
+#include "../include/help.h"
 
 #include <iostream>
 #include <string>
@@ -42,15 +43,6 @@ void commands_initialise()
 	commands["echo"] = &echo_func;
 }
 
-void help_initalise()
-{
-	help_strings["exit"] = "Exits JAWS";
-	help_strings["help"] = "Outputs a list of commands";
-	help_strings["info"] = "Outputs all the info about JAWS";
-	help_strings["math"] = "Does very basic calculations";
-	help_strings["echo"] = "Returns the entered string";
-}
-
 string input()
 {
 	cout << line_start;
@@ -68,17 +60,20 @@ void main_loop()
 	while (!exit)
 	{
 		in = input();
-		splitter(input_split, in);
-		command_word = input_split[0];
 
-		if(command_word != "")
+		if(in != "")
 		{
+			splitter(input_split, in);
+			command_word = input_split[0];
+
 			if (commands.find(command_word) != commands.end())
 			{
 				commands[command_word](input_split);
 			}
 			else cout << not_found << endl;
 		}
+		else cout << not_found << endl;
+
 		input_split.clear();
 	}
 }
