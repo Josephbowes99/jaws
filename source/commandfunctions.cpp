@@ -32,6 +32,7 @@ int help_func(vector<string> args)
 	else if (args_usable[0] == "info") info_help();
 	else if (args_usable[0] == "math") math_help();
 	else if (args_usable[0] == "echo") echo_help();
+	else cout << "Please enter a valid command for help" << endl;
 
 	return 0;
 }
@@ -49,6 +50,10 @@ int info_func(vector<string> args)
 int math_func(vector<string> args)
 {
 	//If statements to check operator type, then changing to ints,
+	if (args[2] == "+") math_add();
+	if (args[2] == "-") math_sub();
+	if (args[2] == "/") math_div();
+	if (args[2] == "*") math_mul();
 
 	return 0;
 }

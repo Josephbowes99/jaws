@@ -1,6 +1,9 @@
 #ifndef __MATH_
 #define __MATH_
 
-float add_math(float one, float two);
+void math_add();
+void math_sub();
+void math_div();
+void math_mul();
 
 #endif
