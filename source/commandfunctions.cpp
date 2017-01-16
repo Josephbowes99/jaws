@@ -50,10 +50,10 @@ int info_func(vector<string> args)
 int math_func(vector<string> args)
 {
 	//If statements to check operator type, then changing to ints,
-	if (args[2] == "+") math_add();
-	if (args[2] == "-") math_sub();
-	if (args[2] == "/") math_div();
-	if (args[2] == "*") math_mul();
+	//if (args[2] == "+") math_add();
+	//if (args[2] == "-") math_sub();
+	//if (args[2] == "/") math_div();
+	//if (args[2] == "*") math_mul();
 
 	return 0;
 }
@@ -110,5 +110,5 @@ int echo_func(vector<string> args)
 
 	echo_out(args_usable, count_wanted, spaces_wanted);
 
-	return 0;
+	sreturn 0;
 }
